@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Voos</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header class="header">
+    <div id="configIcon" class="config-icon">⚙️</div>
+</header>
+<div id="configModal" class="modal">
+    <div class="modal-content">
+        <h2>Configuração</h2>
+        <label for="multiplier">Multiplicador de milhas:</label>
+        <input type="number" id="multiplier" min="1" value="16" step="0.1">
+        <label for="currency">Moeda:</label>
+        <select id="currency">
+            <option value="BRL">BRL</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+        <button id="saveConfig">Salvar</button>
+    </div>
+</div>
+<div class="container">
+    <div class="search-container">
+        <div class="autocomplete-wrapper">
+            <input type="text" class="search-box" id="departureAirport" placeholder="Saída">
+            <ul class="autocomplete-list" id="departureList"></ul>
+        </div>
+        <div class="autocomplete-wrapper">
+            <input type="text" class="search-box" id="arrivalAirport" placeholder="Destino">
+            <ul class="autocomplete-list" id="arrivalList"></ul>
+        </div>
+        <input type="date" class="search-box" id="departureDate">
+        <div class="passenger-selector" id="passengerSelector">
+            <div class="passenger-label">passageiros:</div>
+            <div class="passenger-count" id="passengerCount">1</div>
+            <div class="passenger-dropdown" id="passengerDropdown">
+                <div class="passenger-options">
+                    <div class="passenger-option" data-value="1">1</div>
+                    <div class="passenger-option" data-value="2">2</div>
+                    <div class="passenger-option" data-value="3">3</div>
+                    <div class="passenger-option" data-value="4">4</div>
+                    <div class="passenger-option" data-value="5">5</div>
+                    <div class="passenger-option" data-value="6">6</div>
+                    <div class="passenger-option" data-value="7">7</div>
+                    <div class="passenger-option" data-value="8">8</div>
+                    <div class="passenger-option" data-value="9">9</div>
+                </div>
+            </div>
+        </div>
+        <button class="search-button" id="searchButton">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </button>
+    </div>
+    <h1>Buscador de Voos</h1>
+    <div id="flightResults"></div>
+    <div id="filterTab" class="filter-tab">
+        <div id="filterToggle" class="filter-toggle">&lt;</div>
+        <div id="filterContent" class="filter-content">
+            <h3>Filtros</h3>
+            <div class="filter-option">
+                <input type="checkbox" id="filterEarliest" name="filterEarliest">
+                <label for="filterEarliest">Listar por mais cedo</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="filterCheapest" name="filterCheapest">
+                <label for="filterCheapest">Listar por mais barato</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="filterLongest" name="filterLongest">
+                <label for="filterLongest">Listar por mais longo</label>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="flightService.js"></script>
+</body>
+</html>
